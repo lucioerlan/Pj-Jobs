@@ -3,6 +3,7 @@ import welcome from '../../assets/img/welcome.png';
 import './styles.css';
 
 export default () => {
+  
   const Username = localStorage.getItem('@Username');
   return (
     <div className="container-dashboard">
