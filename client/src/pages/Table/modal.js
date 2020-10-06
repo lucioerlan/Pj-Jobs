@@ -10,13 +10,11 @@ import {
   Select,
   TextField,
   Tooltip,
-  withStyles,
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Draggable from 'react-draggable';
-import InputMask from 'react-input-mask';
 import api from '../../services/api';
 
 function PaperComponent(props) {
@@ -27,20 +25,17 @@ function PaperComponent(props) {
   );
 }
 
-const styles = {
-  uploadButton: { padding: 0 },
-  uploadLabel: {
-    marginBottom: 0,
-    padding: '0.7em 30px',
-    cursor: 'pointer',
-  },
-  file: {
-    display: 'none',
-  },
-};
+export default function Modal() {
 
-function Modal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [state, setState] = useState({
+    company_name: '',
+    company_phone: '',
+    company_email: '',
+    company_avatar: '',
+    job_description: '',
+    job_image: '',
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -52,20 +47,17 @@ function Modal() {
 
   async function submitHandler(e) {
     e.preventDefault();
-    api
-      .post('/works')
 
-      .then(response => {
-        toast.success('Data successfully saved!');
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      })
+    try {
 
-      .catch(error => {
-        toast.error('Error saving!');
-        console.log(error);
-      });
+      await api.post('/works', state);
+      toast.success('Data successfully saved!');
+
+    } catch (err) {
+
+      console.log(err);
+      toast.error('Error saving!');
+    }
   }
 
   return (
@@ -94,7 +86,7 @@ function Modal() {
 
           <DialogContent>
             <Select
-              id="company_avatar"
+              value={state.company_avatar}
               required={true}
               name="company_avatar"
               native
@@ -115,6 +107,9 @@ function Modal() {
               inputProps={{
                 maxLength: 100,
               }}
+              onChange={e =>
+                setState({ ...state, company_avatar: e.target.value })
+              }
             >
               <option value={0}>Company Avatar</option>
               <option
@@ -154,7 +149,7 @@ function Modal() {
               </option>
             </Select>
             <TextField
-              id="company_name"
+              value={state.company_name}
               required={true}
               name="company_name"
               label="Company Name"
@@ -169,32 +164,34 @@ function Modal() {
               inputProps={{
                 maxLength: 100,
               }}
+              onChange={e =>
+                setState({ ...state, company_name: e.target.value })
+              }
             />
 
-            <InputMask id="outlined-name" mask="99-99999-9999">
-              {() => (
-                <TextField
-                  id="company_phone"
-                  required={true}
-                  name="company_phone"
-                  label="Company phone"
-                  style={{ margin: 20 }}
-                  type="text"
-                  color="secondary"
-                  margin="normal"
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  inputProps={{
-                    maxLength: 100,
-                  }}
-                />
-              )}
-            </InputMask>
+            <TextField
+              value={state.company_phone}
+              required={true}
+              name="company_phone"
+              label="Company phone"
+              style={{ margin: 20 }}
+              type="text"
+              color="secondary"
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              inputProps={{
+                maxLength: 100,
+              }}
+              onChange={e =>
+                setState({ ...state, company_phone: e.target.value })
+              }
+            />
 
             <TextField
-              id="company_email"
+              value={state.company_email}
               required={true}
               name="company_email"
               label="Company Email"
@@ -209,10 +206,13 @@ function Modal() {
               inputProps={{
                 maxLength: 50,
               }}
+              onChange={e =>
+                setState({ ...state, company_email: e.target.value })
+              }
             />
 
             <TextField
-              id="job_description"
+              value={state.job_description}
               required={true}
               name="job_description"
               label="Job Description"
@@ -227,10 +227,13 @@ function Modal() {
               inputProps={{
                 maxLength: 50,
               }}
+              onChange={e =>
+                setState({ ...state, job_description: e.target.value })
+              }
             />
 
             <Select
-              id="job_image"
+              value={state.job_image}
               required={true}
               name="job_image"
               native
@@ -251,6 +254,7 @@ function Modal() {
               inputProps={{
                 maxLength: 50,
               }}
+              onChange={e => setState({ ...state, job_image: e.target.value })}
             >
               <option value={0}>Job Image</option>
               <option
@@ -309,4 +313,3 @@ function Modal() {
   );
 }
 
-export default withStyles(styles)(Modal);
