@@ -1,0 +1,52 @@
+{
+  "name": "Pj-Jobs-frontend",
+  "version": "0.1.0",
+  "author": "Erlan Lucio",
+  "github": "https://github.com/lucioerlan",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "axios": "^0.18.0",
+    "date-fns": "^2.15.0",
+    "font-awesome": "^4.7.0",
+    "material-table": "^1.52.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-confirm-alert": "^2.6.2",
+    "react-content-loader": "^4.3.4",
+    "react-dom": "^16.4.2",
+    "react-draggable": "^3.3.0",
+    "react-input-mask": "^2.0.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "1.1.4",
+    "react-select": "^3.1.0",
+    "react-toastify": "^6.0.8",
+    "semantic-ui-react": "^0.88.2",
+    "socket.io-client": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "prettier": "^1.19.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.9.0",
+    "grunt-contrib-imagemin": "^2.0.1"
+  }
+}

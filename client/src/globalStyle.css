@@ -1,0 +1,151 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background-color: #efefef;
+}
+
+body,
+h5 {
+  font-size: 20px;
+  margin: 0;
+  line-height: 50px;
+}
+
+h6 {
+  font-family: 'Roboto', sans-serif;
+  margin: 9px;
+  font-size: 17px;
+  line-height: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.MuiDialogContent-root {
+  background-size: cover;
+  text-align: center;
+  background-position: 30% 45%;
+
+  padding: 100px 0;
+}
+
+.modal-content {
+  margin-top: 150px;
+}
+
+.modal-header {
+  background-color: rgb(33, 33, 33);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+table td {
+  padding: 9px 0px 4px 25px !important;
+}
+
+table th {
+  padding: 50px 1px 4px 22px !important;
+}
+
+.Toastify__toast--success {
+  background-color: #008b00 !important;
+}
+
+.Toastify__toast--error {
+  background-color: #dc3545 !important;
+}
+
+.material-icons {
+  color: grey !important;
+}
+
+.MuiTableSortLabel-icon {
+  opacity: 100% !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.imgAvatar {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.075rem !important;
+}
+
+#MuiFab-primary {
+  width: 65px;
+  height: 65px;
+  padding: 0;
+  font-size: 0.1075rem !important;
+  min-width: 0;
+  box-shadow: 0px 3px 3px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  min-height: 36px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 50%;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  position: fixed;
+  bottom: 10em;
+  right: -130em;
+  margin: -81px 245px 0 0;
+}
+.logo-header {
+  width: 8%;
+}
+
+.ctnFlex {
+  margin-top: 20px;
+  display: flex;
+  margin-left: -10px;
+}
+
+@media only screen and (max-width: 600px) {
+  header#main-header .header-content {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    height: 72px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .logo-header {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .ctnFlex {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: flex;
+  }
+}
+
+.MuiSelect-outlined {
+  border-radius: 4px !important;
+  width: 180px !important;
+}

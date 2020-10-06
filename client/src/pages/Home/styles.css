@@ -1,0 +1,88 @@
+h1 {
+  color: #000;
+  font-size: 2.0em;
+  font-weight: 400;
+  animation: fall 2s;
+  margin: 30px auto;
+}
+
+.container-dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-Logo {
+  width: 35%;
+  margin-top: 50px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .font-size-h2 {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.3em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .welcome-Logo {
+    width: 100%;
+  }
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-200px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes left {
+  from {
+    transform: translateX(-600px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes show {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .time {
+    font-size: 1.453rem;
+  }
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7em;
+  font-family: 'Dosis', sans-serif;
+}

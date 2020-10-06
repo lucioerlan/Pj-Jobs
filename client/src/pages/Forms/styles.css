@@ -1,0 +1,25 @@
+.buttons {
+  margin-top: 30px;
+  float: right;
+}
+.saveButton {
+  margin-left: 5px;
+}
+.navigation {
+  font-size: 15px;
+  font-weight: 300;
+  color: grey;
+  padding-bottom: 15px;
+  display: 'block';
+}
+.title {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.paper {
+  padding: 30px;
+}
+.clear {
+  clear: both;
+}
