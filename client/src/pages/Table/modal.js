@@ -91,8 +91,7 @@ export default function Modal() {
               name="company_avatar"
               native
               style={{ margin: 20 }}
-              color="primary"
-              margin="normal"
+              color="secondary"
               variant="outlined"
               input={
                 <OutlinedInput
@@ -101,9 +100,7 @@ export default function Modal() {
                   variant="outlined"
                 />
               }
-              InputLabelProps={{
-                shrink: true,
-              }}
+
               inputProps={{
                 maxLength: 100,
               }}
@@ -158,9 +155,6 @@ export default function Modal() {
               color="secondary"
               margin="normal"
               variant="outlined"
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 maxLength: 100,
               }}
@@ -179,9 +173,6 @@ export default function Modal() {
               color="secondary"
               margin="normal"
               variant="outlined"
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 maxLength: 100,
               }}
@@ -200,9 +191,6 @@ export default function Modal() {
               color="secondary"
               margin="normal"
               variant="outlined"
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 maxLength: 50,
               }}
@@ -221,9 +209,6 @@ export default function Modal() {
               color="secondary"
               margin="normal"
               variant="outlined"
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 maxLength: 50,
               }}
@@ -238,8 +223,7 @@ export default function Modal() {
               name="job_image"
               native
               style={{ margin: 20 }}
-              color="primary"
-              margin="normal"
+              color="secondary"
               variant="outlined"
               input={
                 <OutlinedInput
@@ -248,9 +232,6 @@ export default function Modal() {
                   variant="outlined"
                 />
               }
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{
                 maxLength: 50,
               }}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Button,
-  Divider,
   FormControl,
   InputLabel,
   MenuItem,
@@ -51,7 +50,6 @@ export default function NewUser() {
 
         <form onSubmit={handleNewUser}>
           <TextField
-            hintText="Name"
             label="Username"
             fullWidth={true}
             margin="normal"
@@ -60,7 +58,6 @@ export default function NewUser() {
           />
 
           <TextField
-            hintText="Name"
             label="E-mail"
             type="email"
             fullWidth={true}
@@ -70,7 +67,7 @@ export default function NewUser() {
           />
 
           <TextField
-            hintText="Name"
+            aria-invalid="false"
             label="Password"
             type="password"
             fullWidth={true}
@@ -80,7 +77,6 @@ export default function NewUser() {
           />
 
           <TextField
-            hintText="Name"
             label="Phone"
             type="text"
             fullWidth={true}
@@ -99,7 +95,6 @@ export default function NewUser() {
                 id: 'role',
               }}
               fullWidth={true}
-              margin="normal"
               value={role}
               onChange={e => setRole(e.target.value)}
             >
@@ -120,7 +115,6 @@ export default function NewUser() {
             </Button>
           </div>
         </form>
-        <Divider />
 
         <div className="clear" />
       </Paper>

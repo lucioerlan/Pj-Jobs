@@ -17,7 +17,7 @@
     "react-confirm-alert": "^2.6.2",
     "react-content-loader": "^4.3.4",
     "react-dom": "^16.4.2",
-    "react-draggable": "^3.3.0",
+    "react-draggable": "^4.4.3",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "1.1.4",
