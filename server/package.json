@@ -1,0 +1,32 @@
+{
+  "name": "api-server",
+  "version": "4.1.0",
+  "author": "Erlan Lucio",
+  "github": "https://github.com/lucioerlan",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ace test"
+  },
+  "keywords": [
+    "adonisjs",
+    "adonis-app"
+  ],
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.2",
+    "@adonisjs/auth": "^3.0.5",
+    "@adonisjs/bodyparser": "^2.0.3",
+    "@adonisjs/cors": "^1.0.6",
+    "@adonisjs/fold": "^4.0.8",
+    "@adonisjs/framework": "^5.0.7",
+    "@adonisjs/ignitor": "^2.0.6",
+    "@adonisjs/lucid": "^5.0.4",
+    "mssql": "^4.1.0",
+    "pg": "^8.3.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "autoload": {
+    "App": "./app"
+  }
+}
