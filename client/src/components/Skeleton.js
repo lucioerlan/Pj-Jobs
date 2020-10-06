@@ -24,7 +24,7 @@ export default () => {
       <rect x="75" y="175" rx="5" ry="5" width="350" height="10" />
       <rect x="355" y="195" rx="3" ry="3" width="30" height="5" />
       <rect x="290" y="195" rx="3" ry="3" width="50" height="5" />
-      <rect x="400" y="195th" rx="3" ry="3" width="20" height="5" />
+      <rect x="400" y="195" rx="3" ry="3" width="20" height="5" />
     </ContentLoader>
   );
 };

@@ -41,7 +41,7 @@ const styles = theme => {
       paddingLeft: 0,
     },
     iconHover: {
-      margin: theme.spacing.unit * 2,
+      margin: theme.spacing(),
       color: 'white',
       '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.5),

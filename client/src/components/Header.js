@@ -113,7 +113,7 @@ class Header extends React.Component {
           className={classNames(classes.appBar, {
             [classes.appBarShift]: navDrawerOpen,
           })}
-        >
+        > 
           <Toolbar>
             <IconButton
               className={classes.menuButton}
@@ -145,7 +145,13 @@ class Header extends React.Component {
                   <AccountCircle />
                 </IconButton>
               </Tooltip>
-              <Menu id="menu_sair" keepMounted onClose={handleMenuClose}>
+              <Menu
+                id="menu_sair"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
                 <MenuItem id="username"> {userEmail} </MenuItem>
                 <MenuItem onClick={this.handleLogout}>Exit </MenuItem>
               </Menu>
@@ -185,7 +191,7 @@ class Header extends React.Component {
               </Menu>
             </div>
           </Toolbar>
-        </AppBar>
+       </AppBar>
       </div>
     );
   }
