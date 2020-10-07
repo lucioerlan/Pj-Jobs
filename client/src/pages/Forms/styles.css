@@ -1,9 +1,7 @@
 .buttons {
-  margin-top: 30px;
   float: right;
-}
-.saveButton {
-  margin-left: 5px;
+  margin: 5px;
+  margin-top: 50px !important;
 }
 .navigation {
   font-size: 15px;

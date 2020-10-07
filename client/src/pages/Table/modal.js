@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Dialog,
@@ -14,6 +15,7 @@ import {
 import AddIcon from '@material-ui/icons/Add';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MaskedInput from 'react-text-mask';
 import Draggable from 'react-draggable';
 import api from '../../services/api';
 
@@ -25,8 +27,41 @@ function PaperComponent(props) {
   );
 }
 
-export default function Modal() {
+function TextMaskCustom(props) {
+  const { inputRef, ...other } = props;
 
+  return (
+    <MaskedInput
+      {...other}
+      ref={ref => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[
+        '(',
+        /[1-9]/,
+        /\d/,
+        ')',
+        ' ',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+        '-',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+      ]}
+    />
+  );
+}
+
+TextMaskCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+};
+
+export default function Modal() {
   const [open, setOpen] = useState(false);
   const [state, setState] = useState({
     company_name: '',
@@ -48,15 +83,18 @@ export default function Modal() {
   async function submitHandler(e) {
     e.preventDefault();
 
-    try {
+    if (!state) {
+      toast.warning('Fill in all fields to save!');
+    } else {
 
-      await api.post('/works', state);
-      toast.success('Data successfully saved!');
+      try {
+        await api.post('/works', state);
+        toast.success('Data successfully saved!');
+      } catch (err) {
+        console.log(err);
+        toast.error('Error saving!');
+      }
 
-    } catch (err) {
-
-      console.log(err);
-      toast.error('Error saving!');
     }
   }
 
@@ -100,7 +138,6 @@ export default function Modal() {
                   variant="outlined"
                 />
               }
-
               inputProps={{
                 maxLength: 100,
               }}
@@ -173,8 +210,11 @@ export default function Modal() {
               color="secondary"
               margin="normal"
               variant="outlined"
-              inputProps={{
-                maxLength: 100,
+              InputProps={{
+                inputComponent: TextMaskCustom,
+                value: state.company_phone,
+                onChange: e =>
+                  setState({ ...state, company_phone: e.target.value }),
               }}
               onChange={e =>
                 setState({ ...state, company_phone: e.target.value })
@@ -293,4 +333,3 @@ export default function Modal() {
     </React.Fragment>
   );
 }
-
