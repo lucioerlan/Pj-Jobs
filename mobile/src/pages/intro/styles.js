@@ -95,16 +95,4 @@ const Title = styled.Text`
   color: rgb(33, 33, 33);
 `;
 
-export {
-  ActiveDot,
-  ButtonWrapper,
-  ButtonTextSignUp,
-  ButtonTextSignIn,
-  Dot,
-  Footer,
-  Header,
-  ImageFeed,
-  Slide,
-  TextDescription,
-  Title
-};
+export {ActiveDot,ButtonWrapper,ButtonTextSignUp,ButtonTextSignIn,Dot,Footer,Header,ImageFeed,Slide,TextDescription,Title,};
