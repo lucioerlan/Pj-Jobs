@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { FormField } from 'semantic-ui-react';
-import './styles.css';
-import EcorpLogo from '../../assets/img/EcorpLogo.png';
+import { useHistory } from 'react-router-dom';
+import { FormHelperText} from '@material-ui/core';
 import { login, username, useremail, role } from '../../services/auth';
+import Logo from '../../assets/img/EcorpLogo.png';
+import './styles.css';
 import api from '../../services/api';
 
-function SignIn() {
-  
+export default function SignIn() {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassowrd] = useState('');
   const [error, setError] = useState('');
@@ -23,51 +24,33 @@ function SignIn() {
         username(response.data.user[0].username);
         useremail(response.data.user[0].email);
         role(response.data.user[0].role);
-        window.location.href = '/home';
+        history.push('/home');
       } catch (err) {
         setError('There was a problem with the login, check your credentials.');
       }
     }
   }
-
+  
   return (
-    <div id="tudo">
+
+    <div id="content-login">
       <form className="style-form" onSubmit={handleSignIn}>
-        <img
-          id="ecorp_logo"
-          width="100"
-          height="100"
-          src={EcorpLogo}
-          alt="Logo"
-        />
-        {error && (
-          <div
-            style={{ fontSize: 20, fontWeight: 600, color: '#af3f3f' }}
-            id="error"
-          >
-            {error}
-          </div>
-        )}
-        <FormField>
+        <img className="ecorp_logo" src={Logo} alt="Logo" />
+        {error && (<FormHelperText className="error-form">{error}</FormHelperText>)}
           <input
-            name="email_login"
+            name='email_login'
             type="email"
             placeholder="E-mail"
             onChange={e => setEmail(e.target.value)}
           />
-        </FormField>
-        <FormField>
           <input
             name="password_login"
             type="password"
             placeholder="Password"
             onChange={e => setPassowrd(e.target.value)}
           />
-        </FormField>
         <input type="submit" value="LOG IN" />
       </form>
     </div>
   );
 }
-
-export default SignIn;

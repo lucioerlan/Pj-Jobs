@@ -1,4 +1,4 @@
-#tudo {
+#content-login {
   background: url('../../assets/img/background.png');
   background-size: cover;
   text-align: center;
@@ -465,6 +465,15 @@ input[type='submit']:hover {
   }
 }
 
-#ecorp_logo {
+.ecorp_logo {
+  width: 100px;
+  height: 100px;
   margin: 0 0 30px 0;
+}
+
+.error-form {
+  font-size: 20px !important;
+  font-weight: 600px !important;
+  color: #af3f3f !important;
+  text-align: center !important;
 }
