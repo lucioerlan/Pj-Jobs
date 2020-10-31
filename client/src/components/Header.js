@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import {
   AppBar,
   IconButton,
   Menu,
   MenuItem,
+  makeStyles,
   Toolbar,
   Tooltip,
-  withStyles,
 } from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
-import Refresh from '@material-ui/icons/Refresh';
+import { AccountCircle, Refresh } from '@material-ui/icons';
 import { logout } from '../services/auth';
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -31,10 +30,14 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1,
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
+    marginRight: 40,
   },
   title: {
     display: 'none',
@@ -42,158 +45,77 @@ const styles = theme => ({
       display: 'block',
     },
   },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
-  sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
-});
+}));
 
-class Header extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      anchorEl: null,
-      mobileMoreAnchorEl: null,
-    };
-  }
+export default function Header(props) {
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const userEmail = localStorage.getItem('@Email');
 
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
-  };
+  const handleMenu = event => setAnchorEl(event.currentTarget);
 
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
+  const handleClose = () => setAnchorEl(null);
+  const handleLogout = () => logout();
 
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
-  };
+  const { handleChangeNavDrawer, navDrawerOpen } = props;
 
-  handleAtualizar = () => {
-    this.setState(window.location.reload());
-  };
-
-  handleLogout = () => {
-    logout();
-  };
-
-  render() {
-    const userEmail = localStorage.getItem('@Email');
+  return (
     
-    const { handleChangeNavDrawer, classes, navDrawerOpen } = this.props;
+    <AppBar
+      className={classNames(classes.appBar, {
+        [classes.appBarShift]: navDrawerOpen,
+      })}
+    >
+      <Toolbar>
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={handleChangeNavDrawer}
+        >
+          <MenuIcon />
+        </IconButton>
+        <div className={classes.grow} />
 
-    const { anchorEl } = this.state;
-    const isMenuOpen = Boolean(anchorEl);
+        <Tooltip title={'Atualizar Página'}>
+          <IconButton color="inherit" onClick={e => window.location.reload()}>
+            <Refresh />
+          </IconButton>
+        </Tooltip>
 
-    const handleProfileMenuOpen = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
+        <Tooltip title={'Sair'}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+        </Tooltip>
 
-    const handleMenuClose = () => {
-      this.setState({ anchorEl: null });
-      this.handleMobileMenuClose();
-    };
-
-    return (
-      <div>
-        <AppBar
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: navDrawerOpen,
-          })}
-        > 
-          <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={handleChangeNavDrawer}
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <Tooltip title={'Updated Page'}>
-                <IconButton
-                  className={classes.sectionDesktop}
-                  color="inherit"
-                  onClick={this.handleAtualizar}
-                >
-                  <Refresh />
-                </IconButton>
-              </Tooltip>
-
-              <Tooltip title={'Exit'}>
-                <IconButton
-                  color="inherit"
-                  aria-owns={isMenuOpen ? 'material-appbar' : null}
-                  onClick={handleProfileMenuOpen}
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                id="menu_sair"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem id="username"> {userEmail} </MenuItem>
-                <MenuItem onClick={this.handleLogout}>Exit </MenuItem>
-              </Menu>
-            </div>
-
-            <div className={classes.sectionMobile}>
-              <Tooltip title={'Updated Page'}>
-                <IconButton
-                  className={classes.sectionMobile}
-                  color="inherit"
-                  onClick={this.handleAtualizar}
-                >
-                  <Refresh />
-                </IconButton>
-              </Tooltip>
-
-              <Tooltip title={'Sair'}>
-                <IconButton
-                  className={classes.sectionMobile}
-                  color="inherit"
-                  aria-owns={isMenuOpen ? 'material-appbar' : null}
-                  onClick={handleProfileMenuOpen}
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Tooltip>
-
-              <Menu
-                id="menu_sair"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem id="username"> {userEmail} </MenuItem>
-                <MenuItem onClick={this.handleLogout}>Exit </MenuItem>
-              </Menu>
-            </div>
-          </Toolbar>
-       </AppBar>
-      </div>
-    );
-  }
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem id="username"> {userEmail} </MenuItem>
+          <MenuItem onClick={handleLogout}>Sair</MenuItem>
+        </Menu>
+      </Toolbar>
+    </AppBar>
+  );
 }
-export default withStyles(styles)(Header);
