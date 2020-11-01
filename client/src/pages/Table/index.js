@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Skeleton from '../../components/Skeleton';
 import api from '../../services/api';
+import './styles.css';
 import ModalAdicionar from './modal';
 
 export default () => {
