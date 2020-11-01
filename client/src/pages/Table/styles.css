@@ -1,13 +1,3 @@
-.MuiTableSortLabel-icon {
-  opacity: 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-}
-
-.material-icons {
-  color: grey !important;
-}
-
 #MuiFab-primary {
   width: 65px;
   height: 65px;
@@ -36,4 +26,19 @@
 .MuiSelect-outlined {
   border-radius: 4px !important;
   width: 170px !important;
+}
+
+.skeleton-content {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding-left: 5%;
+  margin-top: 5%;
+  margin-bottom: -4.754rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .skeleton-content {
+    margin-bottom: -0.754rem;
+  }
 }
