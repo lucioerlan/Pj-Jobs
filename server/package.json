@@ -22,7 +22,7 @@
     "@adonisjs/ignitor": "^2.0.6",
     "@adonisjs/lucid": "^5.0.4",
     "mssql": "^4.1.0",
-    "pg": "^8.3.0",
+    "pg": "^8.11.3",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {},
